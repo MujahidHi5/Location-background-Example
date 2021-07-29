@@ -5,7 +5,7 @@ import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 import android.util.Log;
 
 import com.krunal.locationexample.Database.LogsEntity;
@@ -46,7 +46,7 @@ public class LocationBroadcastReceiver extends BroadcastReceiver {
 
             LocationStatus = LocationStatus.concat("and Location is Enable. ");
 
-
+            Log.e("LocationStatus", str);
             sendNotification("LocationJob", "onStartJob: " + str, "", context);
         } else {
             LocationStatus = LocationStatus.concat("and Location is Not Enable. ");

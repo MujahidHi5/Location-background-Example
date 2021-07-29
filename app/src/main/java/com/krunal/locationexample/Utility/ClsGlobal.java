@@ -3,7 +3,7 @@ package com.krunal.locationexample.Utility;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
@@ -27,7 +27,7 @@ public class ClsGlobal {
 
     public static String packageName = "com.krunal.locationexample";
 
-    public static int getCurrentHour(){
+    public static int getCurrentHour() {
         Calendar rightNow = Calendar.getInstance();
         // return the hour in 24 hrs format (ranging from 0-23);
         return rightNow.get(Calendar.HOUR_OF_DAY);
@@ -79,14 +79,14 @@ public class ClsGlobal {
         }
     }
 
-    public static void CancelWorkByTag(String tag){
+    public static void CancelWorkByTag(String tag) {
         WorkManager.getInstance().cancelAllWorkByTag(tag);
     }
 
-    public static void ScheduleWorker(String tagName,int min){
+    public static void ScheduleWorker(String tagName, int min) {
 
         PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(LocationWorker.class,
-                min, TimeUnit.MINUTES)
+                min, TimeUnit.SECONDS)
                 .addTag(tagName)
                 .build();
 
@@ -102,7 +102,4 @@ public class ClsGlobal {
         int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);
         return result == PackageManager.PERMISSION_GRANTED;
     }
-
-
-
 }
