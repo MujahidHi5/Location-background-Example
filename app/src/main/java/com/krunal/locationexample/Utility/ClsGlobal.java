@@ -3,6 +3,7 @@ package com.krunal.locationexample.Utility;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+
 import androidx.core.content.ContextCompat;
 
 import androidx.work.ExistingPeriodicWorkPolicy;
@@ -32,7 +33,6 @@ public class ClsGlobal {
         // return the hour in 24 hrs format (ranging from 0-23);
         return rightNow.get(Calendar.HOUR_OF_DAY);
     }
-
 
     public static String getEntryDateFormat(String e_Date) {
         final String DATE_DASH_FORMAT = "dd/MM/yyyy hh:mm aa";
@@ -86,7 +86,7 @@ public class ClsGlobal {
     public static void ScheduleWorker(String tagName, int min) {
 
         PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(LocationWorker.class,
-                min, TimeUnit.SECONDS)
+                min, TimeUnit.MINUTES)
                 .addTag(tagName)
                 .build();
 
